@@ -1,5 +1,21 @@
 <template>
   <div>
-    <h1 class="text-red-500">Hello, there!</h1>
+    <button @click="search">button</button>
   </div>
 </template>
+
+<script>
+import _ from 'lodash'
+export default {
+  data () {
+    return {
+      variable: ''
+    }
+  },
+  methods: {
+    search: _.debounce(function (value) {
+      console.log('11')
+    }, 1000)
+  }
+}
+</script>

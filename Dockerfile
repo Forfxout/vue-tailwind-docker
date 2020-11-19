@@ -1,19 +1,19 @@
 FROM ubuntu:latest
 FROM node:lts-alpine as build-stage
 
-# Set NODE_ENV to production
-ENV NODE_ENV production
-
 # Working directory
 WORKDIR /app
 
 # Dependencies
 COPY package.json ./
-RUN yarn
+RUN npm install
+
+# Set NODE_ENV to production
+ENV NODE_ENV production
 
 # Copying and building for production
 COPY . .
-RUN yarn build
+RUN npm run build
 
 # Nginx
 FROM nginx:stable-alpine as production-stage
