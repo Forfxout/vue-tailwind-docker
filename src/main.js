@@ -4,14 +4,13 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 
-// TODO API Caller
-import axios from 'axios'
+import VueResource from 'vue-resource'
 
 // CSS Entry
 import '@/assets/css/main.css'
 
 Vue.config.productionTip = false
-Vue.prototype.http = axios.create({ baseURL: process.env.VUE_APP_API_URL })
+Vue.use(VueResource)
 
 new Vue({
   router,
